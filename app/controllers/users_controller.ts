@@ -1,12 +1,18 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import UserService from '#services/user_service'
 import { inject } from '@adonisjs/core'
+import User from '#models/user'
 
 @inject()
 export default class UsersController {
   constructor(protected userService: UserService) {}
-  handle() {
-    return this.userService.respond()
+  async handle(ctx: HttpContext) {
+    const user = new User()
+    user.name = ctx.request.body().name
+    user.email = ctx.request.body().email
+    user.age = ctx.request.body().age
+
+    return await this.userService.createUser(user)
   }
   async testUser(ctx: HttpContext) {
     return [

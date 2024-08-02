@@ -40,5 +40,5 @@ router
   .prefix('api')
 
 //use controller in route
-router.get('users', [UsersController])
+router.post('users', [UsersController])
 //or router.get('users', "#controllers/users_controller.testUser")
