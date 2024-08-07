@@ -7,6 +7,7 @@
 |
 */
 
+import RedisController from '#controllers/redis_controller'
 import router from '@adonisjs/core/services/router'
 const UsersController = () => import('#controllers/users_controller')
 
@@ -40,5 +41,8 @@ router
   .prefix('api')
 
 //use controller in route
-router.post('users', [UsersController])
+router.post('/users', [UsersController])
+router.delete('/redis/:slug', [RedisController, 'destroy']).as('redis.destroy')
+router.delete('/redis/flush', [RedisController, 'flush']).as('redis.flush')
+
 //or router.get('users', "#controllers/users_controller.testUser")

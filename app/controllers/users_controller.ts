@@ -7,12 +7,14 @@ import User from '#models/user'
 export default class UsersController {
   constructor(protected userService: UserService) {}
   async handle(ctx: HttpContext) {
-    const user = new User()
-    user.name = ctx.request.body().name
-    user.email = ctx.request.body().email
-    user.age = ctx.request.body().age
+    // const user = new User()
+    // user.name = ctx.request.body().name
+    // user.email = ctx.request.body().email
+    // user.age = ctx.request.body().age
 
-    return await this.userService.createUser(user)
+    // return await this.userService.createUser(user)
+
+    return await this.userService.findUser()
   }
   async testUser(ctx: HttpContext) {
     return [
