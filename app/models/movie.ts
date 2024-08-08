@@ -58,6 +58,7 @@ export default class Movie extends BaseModel {
       return movies
     } catch (error) {
       console.log('An error occurred while trying to fetch movies from the database.')
+      console.log('this is the error', error)
       return []
     }
   }
